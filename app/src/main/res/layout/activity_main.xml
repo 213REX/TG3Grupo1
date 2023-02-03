@@ -8,28 +8,30 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="124dp"
-        android:layout_height="145dp"
-        android:fontFamily="@font/secrcode"
-        android:text="Grab a Cab"
+        android:layout_width="316dp"
+        android:layout_height="66dp"
+        android:fontFamily="@font/cyberpunk"
+        android:text="ZaraTaxi"
         android:textAlignment="center"
+        android:textColor="#EEFF00"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.169" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="217dp"
-        android:layout_height="274dp"
+        android:layout_width="285dp"
+        android:layout_height="341dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457"
+        app:layout_constraintVertical_bias="0.556"
         app:srcCompat="@drawable/taxi" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
