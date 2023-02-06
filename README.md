@@ -2,21 +2,21 @@
 ## Introducción
     
     #CAMBIAR CONTENIDO DE README
-    # Estructuras de datos
-        Adapter {
-            SerieAdapter: Aqui se hacen los modelos para las estadisticas, donde en este caso
-            se encontrarían (las ultimas 10 partidas) o (las 10 partidas mas cortas(que menos turnos han tenido))
+    # Estructuras de aplicacion
+
+        La aplicacion se divide en diversas carpetas donde cada uno representa una funcion diferente al resto
+        cada packete contiene sus clases correspondiente y estas se dividen en Codigo y Interfaz,
+        cada participante del grupo tiene asignado o Codigo o Interfaz como su prncipal tarea
+
+        Alert Dialog {
+           
         }
 
-        Controlers {
-            LecturaEscrituraDatos: Esta clase como su nombre indica se ocupa de la recogida de los datos de las partidas
-            para poder mostrarlos luego en la parte de estadisticas
-            Logica: Aqui se desarrolla todo el codigo que haga que funcione el juego
-            Sonidos: En esta clase se encuentran los sonidos a utilizar en la aplicación
-            Utilidades: Aqui se encuentran los métodos para comprobar los campos, entre otras cosas
+        BBDD {
+            Las controladores
         }
 
-        Modelo {
+        Fragments {
             Fichas: Esto es el constructor donde se encuentran las variables de las fichas
             Serie: Esto es el constructor donde se encuentran las variables de las estadisticas
         }
@@ -31,21 +31,20 @@
 
     #Estructuras de proyecto
         #Actividades
-            #(Nicolas Del Amo)
-                Se encargará un poco como todos de la programación en general, ademas de buscar
-                material para la app (imagenes, recursos, etc..)
+            #(Nicolas Del Amo / Codigo - Jefe de Proyecto)
+                Se encarga principalmente de organizar y tomar las decisiones del equipo
                     Recursos / Programación
 
-            #(Daniel Alvaro del Rio)
-                Se encargará principalmente de los Adapters y de los modelos
+            #(Daniel Alvaro del Rio / Codigo)
+                Se encargará principalmente de la programacion y estructurar las actividades
                     Adapters / Programación / Modelos
 
-            #(Christian Martinez - Jefe de Proyecto)
-                Se encargará de la interfaz (que se vea fresco)
+            #(Christian Martinez / Interfaz)
+                Se encargará de la interfaz y las decisiones de diseño
                     Interfaz / Programación
 
-            #(Miguel Lizaranzu)
-                Se encargará de ayudar al jefe de equipo con el diseño de la app
+            #(Miguel Lizaranzu / Interfaz)
+                Se encargará de ayudar al deseño de las interfazes
                     Diseño / Programación
 
         # Controles:
@@ -56,14 +55,11 @@
 
     #Descripción del proyecto
         #Descripción general
-            Nuestra aplicación empezará con un Splash el cual tratará de un Gif de una partida entera de
-            Tres en Raya (no durará mas de 5 segundos), al acabar el Splash, nos llevará automaticamente a la pantalla de Inicio
-            desde donde se podrá iniciar una nueva partida o ver unas estadisticas (no se que estadisticas aún xD)
-            Al iniciar una partida se activa un cronometro para contar lo que dura la partida (aún no sabemos si lo incluiremos
-            en la pantalla o no) y será por turnos como es obvio, el cronometro se detendrá al empatar o al ganar uno de los
-            dos jugadores (en caso de no incluirlo gráficamente lo pondremos al acabar la partida).
-            Al empatar o acabar la partida se podrá iniciar una nueva partida desde la misma ventana o volver a la pantalla de Inicio
-
+            Nuestra aplicacion consiste en la descarga de datos del ayuntamiento de zaragoza para que recoga 
+            las paradas de Taxi y indique a donde deben ir los taxis, la tematica elegida por el grupo a sido Cyberpunk
+            la aplicacion principalmente tendra estetica del videojuego Cyberpunk y sus colores primarios seran
+            Amarrilo, Azul y Negro
+            
         #Descripción detallada de cada uno
             (Nicolas del amo)
             [Se ocupó de la pantalla de presentación de la aplicación, la cual se trata de un gif
