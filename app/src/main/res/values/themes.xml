@@ -15,7 +15,7 @@
     </style>
 
     <style name="fondoInicio" parent ="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/cyber</item>
+        <item name="android:windowBackground">@drawable/fondo</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">true</item>
     </style>
