@@ -17,6 +17,8 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        //el siguiente codigo permite que el splash cambie directamente
+        //a la main activity tras 5 segundos
         Handler handler = new Handler(Looper.myLooper());
         handler.postDelayed(()->{
 
