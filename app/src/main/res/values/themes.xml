@@ -20,4 +20,9 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowActionBar">true</item>
     </style>
+
+    <style name="fondoAplicacion" parent ="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/fondoapp</item>
+        <item name="android:windowActionBar">true</item>
+    </style>
 </resources>
