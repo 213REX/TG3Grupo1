@@ -1,27 +1,57 @@
 package com.example.tg3grupo1.Modelo;
 
 public class Modelo {
-    private String nombre;
-    private int edad;
+    private String id;
+    private String titulo;
+    private String ultimaactualizacion;
+    private String coordenadas;
+    private String icono;
 
-    public Modelo(String nombre, int edad) {
-        this.nombre = nombre;
-        this.edad = edad;
+    public Modelo(String id, String titulo, String ultimaactualizacion, String coordenadas, String icono) {
+        this.id = id;
+        this.titulo = titulo;
+        this.ultimaactualizacion = ultimaactualizacion;
+        this.coordenadas = coordenadas;
+        this.icono = icono;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getId() {
+        return id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getUltimaactualizacion() {
+        return ultimaactualizacion;
+    }
+
+    public void setUltimaactualizacion(String ultimaactualizacion) {
+        this.ultimaactualizacion = ultimaactualizacion;
+    }
+
+    public String getCoordenadas() {
+        return coordenadas;
+    }
+
+    public void setCoordenadas(String coordenadas) {
+        this.coordenadas = coordenadas;
+    }
+
+    public String getIcono() {
+        return icono;
+    }
+
+    public void setIcono(String icono) {
+        this.icono = icono;
     }
 }
