@@ -15,6 +15,9 @@ public class Modelo {
         this.icono = icono;
     }
 
+    public Modelo() {
+    }
+
     public String getId() {
         return id;
     }

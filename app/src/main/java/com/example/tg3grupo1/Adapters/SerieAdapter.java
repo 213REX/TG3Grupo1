@@ -32,8 +32,8 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull SerieAdapter.ViewHolder holder, int position) {
-        holder.nombre.setText(series.get(position).getNombre());
-        holder.resultado.setText(series.get(position).getEdad());
+        //holder.nombre.setText(series.get(position).getNombre());
+        //holder.resultado.setText(series.get(position).getEdad());
 
     }
 
