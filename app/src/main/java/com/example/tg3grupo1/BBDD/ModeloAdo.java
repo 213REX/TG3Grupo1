@@ -19,33 +19,33 @@ public class ModeloAdo {
     }
 
     public List<Modelo> getAll(){
-        List<Modelo> alumnos = new ArrayList<>();
-        String sql = "SELECT * FROM alumnos";
+        List<Modelo> Taxis = new ArrayList<>();
+        String sql = "SELECT * FROM Taxis";
 
         try (SQLiteDatabase db = Util.abrirBD(context, Util.DBNAME)){
             Cursor cursor = db.rawQuery(sql, null);
 
-            rellenarAlumnos(cursor, alumnos);
+            rellenarAlumnos(cursor, Taxis);
         }
 
-        return alumnos;
+        return Taxis;
     }
 
-    private void rellenarAlumnos(Cursor cursor, List<Modelo> alumnos) {
+    private void rellenarAlumnos(Cursor cursor, List<Modelo> Taxis) {
         while (cursor.moveToNext()){
-            Modelo alumno = new Modelo();
-            alumno.setId(cursor.getString(0));
-            alumno.setTitulo(cursor.getString(1));
-            alumno.setUltimaactualizacion(cursor.getString(2));
-            alumno.setCoordenadas(cursor.getString(3));
-            alumno.setIcono(cursor.getString(4));
-            alumnos.add(alumno);
+            Modelo parada = new Modelo();
+            parada.setId(cursor.getString(0));
+            parada.setTitulo(cursor.getString(1));
+            parada.setUltimaactualizacion(cursor.getString(2));
+            parada.setCoordenadas(cursor.getString(3));
+            parada.setIcono(cursor.getString(4));
+            Taxis.add(parada);
 
         }
     }
 
     public Modelo getById(String id){
-        String sql = "SELECT * FROM alumnos WHERE id = ?";
+        String sql = "SELECT * FROM Taxis WHERE id = ?";
 
         try (SQLiteDatabase db = Util.abrirBD(context, Util.DBNAME)){
             Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(id)});
@@ -66,7 +66,7 @@ public class ModeloAdo {
 
     public List<Modelo> getByEmailServer(String server){
         List<Modelo> alumnos = new ArrayList<>();
-        String sql = "SELECT * FROM alumnos WHERE email LIKE '%@" + server + "'";
+        String sql = "SELECT * FROM Taxis WHERE email LIKE '%@" + server + "'";
 
         try (SQLiteDatabase db = Util.abrirBD(context, Util.DBNAME)){
             Cursor cursor = db.rawQuery(sql, null);
@@ -98,52 +98,46 @@ public class ModeloAdo {
         }
     }
 
-    public void actualizarAlumno(Modelo parada){
+    public void actualizarParada(Modelo parada){
         try (SQLiteDatabase db = Util.abrirBD(context, Util.DBNAME)){
             ContentValues cv = new ContentValues();
             cv.put(ID, parada.getTitulo());
             cv.put("ultimaactualizacion", parada.getUltimaactualizacion());
             cv.put("coordenadas", parada.getCoordenadas());
             cv.put("icono", parada.getIcono());
-            db.update("alumnos", cv, "id = ?", new String[]{String.valueOf(parada.getId())});
+            db.update("Taxis", cv, "id = ?", new String[]{String.valueOf(parada.getId())});
         }
     }
 
     public void borrarAlumno(Modelo parada){
         try (SQLiteDatabase db = Util.abrirBD(context, Util.DBNAME)){
-            db.delete("alumnos", "id = ?", new String[] {String.valueOf(parada.getId())});
+            db.delete("Taxis", "id = ?", new String[] {String.valueOf(parada.getId())});
         }
     }
 
     public List<Modelo> update(){
-        List<Modelo> parada = new ArrayList<>();
-        String sql = "UPDATE alumnos SET alumnos = ?";
-
         try (SQLiteDatabase db = Util.abrirBD(context, Util.DBNAME)){
+            String sql = "SELECT * FROM Taxis;";
             Cursor cursor = db.rawQuery(sql, null);
+            List<Modelo> paradas = new ArrayList<>();
 
-            rellenarAlumnos(cursor, parada);
+            while (cursor.moveToNext()){
+                Modelo parada = new Modelo();
+                parada.setId(cursor.getString(0));
+                parada.setTitulo(cursor.getString(1));
+                parada.setUltimaactualizacion(cursor.getString(2));
+                parada.setCoordenadas(cursor.getString(3));
+                parada.setIcono(cursor.getString(4));
+                paradas.add(parada);
+            }
+            return paradas;
         }
-
-        return parada;
     }
 
-    public List<Modelo> createTable(){
+
+    public List<Modelo> buscar(){
         List<Modelo> alumnos = new ArrayList<>();
-        String sql = "CREATE TABLE databasename(String parada)";
-
-        try (SQLiteDatabase db = Util.abrirBD(context, Util.DBNAME)){
-            Cursor cursor = db.rawQuery(sql, null);
-
-            rellenarAlumnos(cursor, alumnos);
-        }
-
-        return alumnos;
-    }
-
-    public List<Modelo> busccar(){
-        List<Modelo> alumnos = new ArrayList<>();
-        String sql = "SELECT * FROM nombre_tabla WHERE id LIKE '%CAMPO_BUSCAR%' OR titulo LIKE '%CAMPO_BUSCAR%'" +
+        String sql = "SELECT * FROM Taxis WHERE id LIKE '%CAMPO_BUSCAR%' OR titulo LIKE '%CAMPO_BUSCAR%'" +
                 "OR ultimaactualizacion LIKE '%CAMPO_BUSCAR%' OR coordenadas LIKE '%CAMPO_BUSCAR%' OR " +
                 "icono LIKE '%CAMPO_BUSCAR%'";
 
