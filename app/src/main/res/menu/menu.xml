@@ -17,9 +17,4 @@
         android:icon="@drawable/busqueda"
         android:title="Buscar"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/item_creditos"
-        android:icon="@drawable/creditos"
-        android:title="Creditos"
-        app:showAsAction="ifRoom" />
 </menu>

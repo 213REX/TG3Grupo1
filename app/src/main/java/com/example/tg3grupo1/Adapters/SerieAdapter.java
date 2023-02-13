@@ -6,54 +6,66 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.ViewHolder> {
+    private List<Modelo> paradas;
+    private OnNoteListener onNoteListener;
 
-    private ArrayList<Modelo> series;
-    public SerieAdapter(ArrayList<Modelo> series){
-        this.series = series;
-
+    public SerieAdapter(List<Modelo> paradas, OnNoteListener onNoteListener) {
+        this.paradas = paradas;
+        this.onNoteListener = onNoteListener;
     }
 
     @NonNull
     @Override
-    public SerieAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.activity_contenedor_de_datos, parent, false);
-
-        return new SerieAdapter.ViewHolder(view);
+        return new ViewHolder(view, onNoteListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SerieAdapter.ViewHolder holder, int position) {
-        //holder.nombre.setText(series.get(position).getNombre());
-        //holder.resultado.setText(series.get(position).getEdad());
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.campoid.setText(paradas.get(position).getId());
+        holder.campoTitulo.setText(paradas.get(position).getTitulo());
+//        holder.campoImagen.setImageBitmap();
     }
 
     @Override
     public int getItemCount() {
-        return series.size();
+        return paradas.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView campoid;
+        public TextView campoTitulo;
+        public ImageView campoImagen;
+        OnNoteListener onNoteListener;
 
-        public TextView nombre;
-        public TextView resultado;
-
-
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
+            campoid = itemView.findViewById(R.id.campoId);
+            campoTitulo = itemView.findViewById(R.id.campoTitulo);
+            campoImagen = itemView.findViewById(R.id.campoImagen);
+            this.onNoteListener = onNoteListener;
 
-            /*nombre = itemView.findViewById(R.id.nombre);
-            resultado = itemView.findViewById(R.id.resultado);*/
-
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteClic(getAdapterPosition());
+        }
+    }
+
+    public interface OnNoteListener {
+        void onNoteClic(int posicion);
     }
 }
