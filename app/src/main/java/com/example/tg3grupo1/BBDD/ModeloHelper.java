@@ -8,13 +8,13 @@ import androidx.annotation.Nullable;
 
 public class ModeloHelper extends SQLiteOpenHelper {
 
-    public ModeloHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public ModeloHelper(@Nullable Context context) {
+        super(context, "Taxis.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "CREATE TABLE Taxis (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, " +
+        String sql = "CREATE TABLE Taxis (id INTEGER PRIMARY KEY, titulo TEXT, " +
                 "ultimaactualizacion TEXT, coordenadas TEXT, icono TEXT);";
         sqLiteDatabase.execSQL(sql);
     }
