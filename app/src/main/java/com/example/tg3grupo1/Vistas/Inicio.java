@@ -1,10 +1,17 @@
 package com.example.tg3grupo1.Vistas;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.HorizontalScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.tg3grupo1.BBDD.DowloadJson;
+import com.example.tg3grupo1.BBDD.ModeloAdo;
+import com.example.tg3grupo1.BBDD.ModeloHelper;
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
 import com.google.gson.Gson;
@@ -12,6 +19,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -27,6 +36,7 @@ public class Inicio extends AppCompatActivity {
         setTheme(R.style.fondoAplicacion);
         setContentView(R.layout.activity_inicio);
 
+
         DowloadJson json = new DowloadJson();
         try {
             contenido = json.execute("https://www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parada-taxi.json?rf=html&srsname=wgs84&start=0&rows=1000&distance=500").get();
@@ -36,7 +46,7 @@ public class Inicio extends AppCompatActivity {
         cargarodelo();
     }
 
-    private static void cargarodelo() {
+    private void cargarodelo() {
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(contenido, JsonObject.class);
         JsonElement idElement = jsonObject.get("result");
@@ -45,9 +55,9 @@ public class Inicio extends AppCompatActivity {
         for (int i = 0; i < lista.size(); i++) {
             objeto.add((JsonObject) lista.get(i));
         }
-        List<JsonObject>geome = new ArrayList<>();
-        List<Modelo>modelos = new ArrayList<>();
-        for (int i = 0;i<objeto.size(); i++){
+        List<JsonObject> geome = new ArrayList<>();
+        List<Modelo> modelos = new ArrayList<>();
+        for (int i = 0; i < objeto.size(); i++) {
             geome.add((JsonObject) objeto.get(i).get("geometry"));
             geome.get(i).get("coordinates");
             modelos.add(new Modelo(
@@ -58,6 +68,35 @@ public class Inicio extends AppCompatActivity {
                     objeto.get(i).get("icon").toString()
             ));
         }
-        System.out.println("");
+//        ModeloHelper modeloHelper = new ModeloHelper(this);
+//        modeloHelper.getWritableDatabase();
+//        ModeloAdo modeloAdo = new ModeloAdo(this);
+//        modeloAdo.rellenarAlumnos(flkjflkj, modelos);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NotNull MenuItem item) {
+        if (item.getItemId() == R.id.item_home) {
+
+        } else if (item.getItemId() == R.id.item_buscar) {
+
+        } else if (item.getItemId() == R.id.item_actualizar) {
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+//    public void showFragment(Fragment fragment) {
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.contenedor, fragment)
+//                .commit();
+//    }
 }
