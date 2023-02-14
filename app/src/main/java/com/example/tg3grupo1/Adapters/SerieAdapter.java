@@ -53,7 +53,7 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.ViewHolder> 
             super(itemView);
             campoid = itemView.findViewById(R.id.campoId);
             campoTitulo = itemView.findViewById(R.id.campoTitulo);
-            campoImagen = itemView.findViewById(R.id.campoImagen);
+            campoImagen = itemView.findViewById(R.id.imagenContenedor);
             this.onNoteListener = onNoteListener;
 
             itemView.setOnClickListener(this);
