@@ -8,17 +8,21 @@
         cada packete contiene sus clases correspondiente y estas se dividen en Codigo y Interfaz,
         cada participante del grupo tiene asignado o Codigo o Interfaz como su prncipal tarea
 
-        Alert Dialog {
-           
+        Adapters {
+            SerieAdapter : Esta clse genera los metodos necesarios para poder viisualizar en la 
+            aplicacion la informacion de la base de datos
         }
 
         BBDD {
-            Las controladores
+            Aqui se encuentran todas las clases que conectan con la base de datos y interactuan de alguna manera con esta
+            DownloadJson : Permite la descarga del JSON para poder trabajar sobre esta
+            ModeloAdo : En esta clase se generan los metodos para para poder interactuar con la base de datos 
+            ModeloHelper : Crea la base de datos 
         }
 
         Fragments {
-            Fichas: Esto es el constructor donde se encuentran las variables de las fichas
-            Serie: Esto es el constructor donde se encuentran las variables de las estadisticas
+            ContenidoGeneral : 
+            Descripcion : 
         }
 
         Vista {
