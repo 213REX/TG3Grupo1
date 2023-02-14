@@ -25,10 +25,10 @@ public class ModeloAdo implements AutoCloseable {
         for (int i = 0 ; i< parada.size(); i++) {
             ContentValues valores = new ContentValues();
             valores.put("id", parada.get(i).getId());
-            valores.put("Titulo", parada.get(i).getTitulo());
-            valores.put("Ultima actualizacion", parada.get(i).getUltimaactualizacion());
-            valores.put("Coordenadas", parada.get(i).getCoordenadas());
-            valores.put("Icono", parada.get(i).getIcono());
+            valores.put("titulo", parada.get(i).getTitulo());
+            valores.put("ultimaactualizacion", parada.get(i).getUltimaactualizacion());
+            valores.put("coordenadas", parada.get(i).getCoordenadas());
+            valores.put("icono", parada.get(i).getIcono());
             helper.getWritableDatabase().insert("Taxis", null, valores);
 
             String sql = "INSERT INTO Taxi (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
@@ -41,10 +41,10 @@ public class ModeloAdo implements AutoCloseable {
         Modelo parada = new Modelo();
         ContentValues valores = new ContentValues();
         valores.put("id", parada.getId());
-        valores.put("Titulo", parada.getTitulo());
-        valores.put("Ultimaactualizacion", parada.getUltimaactualizacion());
-        valores.put("Coordenadas", parada.getCoordenadas());
-        valores.put("Icono", parada.getIcono());
+        valores.put("titulo", parada.getTitulo());
+        valores.put("ultimaactualizacion", parada.getUltimaactualizacion());
+        valores.put("coordenadas", parada.getCoordenadas());
+        valores.put("icono", parada.getIcono());
         helper.getWritableDatabase().insert("Taxis", null, valores);
 
         String sql = "SELECT * FROM TAXIS WHERE id LIKE '%"+dato+"%' OR titulo LIKE '%"+dato+"%' " +
