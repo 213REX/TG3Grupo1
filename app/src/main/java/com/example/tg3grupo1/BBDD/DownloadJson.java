@@ -118,9 +118,6 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String bitmap) {
-        //en este metodo cargamos el fragment dentro del contenedor con los datos correspondientes
-        ContenidoGeneral contenidoGeneral = new ContenidoGeneral();
-        contenidoGeneral.contenidoRecycler();
     }
 
 }

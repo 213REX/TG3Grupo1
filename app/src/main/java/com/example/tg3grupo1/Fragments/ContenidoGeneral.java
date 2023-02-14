@@ -71,6 +71,8 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerGremio.setLayoutManager(layoutManager);
+        contenidRecycler = DownloadJson.modelos;
+        recyclerGremio.setAdapter(new SerieAdapter(DownloadJson.modelos, this));
         return view;
     }
 
@@ -87,10 +89,5 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
                 .replace(R.id.contenedor, Descripcion.newInstance(context, contenidRecycler, posicion))
                 .commit();
 
-    }
-
-    public void contenidoRecycler(){
-        contenidRecycler = DownloadJson.modelos;
-        recyclerGremio.setAdapter(new SerieAdapter(DownloadJson.modelos, this));
     }
 }
