@@ -24,6 +24,7 @@ public class ModeloAdo implements AutoCloseable {
 
 
     public void insertar(ArrayList<Modelo> parada) {
+        helper.onCreate(db);
         for (int i = 0 ; i< parada.size(); i++) {
             ContentValues valores = new ContentValues();
             valores.put("id", parada.get(i).getId().replace("\"","" ));
@@ -55,6 +56,8 @@ public class ModeloAdo implements AutoCloseable {
         helper.getWritableDatabase().execSQL(sql, new Object[]{parada.getId(), parada.getTitulo(),
                 parada.getUltimaactualizacion(), parada.getCoordenadas(), parada.getIcono()});
     }
+
+
 
     @Override
     public void close() throws Exception {
