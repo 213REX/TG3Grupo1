@@ -33,7 +33,7 @@ import java.util.List;
 public class DownloadJson extends AsyncTask<String, Void, String> {
     private static Context CONTEXT;
     private static String result = "";
-    public static Bitmap iconoImagen;
+    public static File iconoImagen;
     public static ArrayList<Modelo> modelos = new ArrayList<>();
 
     public static void metercosas(Context context) {
@@ -92,7 +92,7 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
         //aqui lo que hacemos es llamar el metodo para meter dentro de iconoImagen el
         //bitmap para utilizarlo luego en la inserción de datos
 
-        //downloadImage(modelos.get(0).getIcono());
+        //downloadImage(modelos.get(0).getIcono().replace("\"", ""));
 
         //aqui lo que hacemos es meter los datos dentro de la base de datos, para luego hacer
         //las consultas correspondiente a esta
@@ -106,14 +106,6 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
 
 
     public void downloadImage(String imageUrl) {
-        Bitmap bitmap = null;
-        try {
-            URL url = new URL(imageUrl);
-            bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        iconoImagen = bitmap;
     }
 
     @Override
