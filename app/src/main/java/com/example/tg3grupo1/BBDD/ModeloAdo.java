@@ -31,9 +31,9 @@ public class ModeloAdo implements AutoCloseable {
             valores.put("icono", parada.get(i).getIcono());
             helper.getWritableDatabase().insert("registros", null, valores);
 
-//            String sql = "INSERT INTO registros (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
-//            helper.getWritableDatabase().execSQL(sql, new Object[]{parada.get(i).getId(), parada.get(i).getTitulo(),
-//                    parada.get(i).getUltimaactualizacion(), parada.get(i).getCoordenadas(), parada.get(i).getIcono()});
+            String sql = "INSERT INTO registros (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
+            helper.getWritableDatabase().execSQL(sql, new Object[]{parada.get(i).getId(), parada.get(i).getTitulo(),
+                    parada.get(i).getUltimaactualizacion(), parada.get(i).getCoordenadas(), parada.get(i).getIcono()});
         }
     }
 
