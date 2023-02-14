@@ -29,11 +29,11 @@ public class ModeloAdo implements AutoCloseable {
             valores.put("ultimaactualizacion", parada.get(i).getUltimaactualizacion());
             valores.put("coordenadas", parada.get(i).getCoordenadas());
             valores.put("icono", parada.get(i).getIcono());
-            helper.getWritableDatabase().insert("taxis", null, valores);
+            helper.getWritableDatabase().insert("registros", null, valores);
 
-            String sql = "INSERT INTO Taxi (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
-            helper.getWritableDatabase().execSQL(sql, new Object[]{parada.get(i).getId(), parada.get(i).getTitulo(),
-                    parada.get(i).getUltimaactualizacion(), parada.get(i).getCoordenadas(), parada.get(i).getIcono()});
+//            String sql = "INSERT INTO registros (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
+//            helper.getWritableDatabase().execSQL(sql, new Object[]{parada.get(i).getId(), parada.get(i).getTitulo(),
+//                    parada.get(i).getUltimaactualizacion(), parada.get(i).getCoordenadas(), parada.get(i).getIcono()});
         }
     }
 
@@ -47,7 +47,7 @@ public class ModeloAdo implements AutoCloseable {
         valores.put("icono", parada.getIcono());
         helper.getWritableDatabase().insert("Taxis", null, valores);
 
-        String sql = "SELECT * FROM taxis WHERE id LIKE '%"+dato+"%' OR titulo LIKE '%"+dato+"%' " +
+        String sql = "SELECT * FROM registros WHERE id LIKE '%"+dato+"%' OR titulo LIKE '%"+dato+"%' " +
                 "OR ultimaactualizacion LIKE '%"+dato+"%' OR coordenadas LIKE '%"+dato+"%' " +
                 "OR icono LIKE '%"+dato+"%';";
         helper.getWritableDatabase().execSQL(sql, new Object[]{parada.getId(), parada.getTitulo(),
