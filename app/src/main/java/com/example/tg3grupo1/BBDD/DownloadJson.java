@@ -1,15 +1,27 @@
 package com.example.tg3grupo1.BBDD;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.tg3grupo1.Fragments.ContenidoGeneral;
 import com.example.tg3grupo1.Modelo.Modelo;
+import com.example.tg3grupo1.R;
+import com.example.tg3grupo1.Vistas.Inicio;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,13 +30,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DowloadJson extends AsyncTask<String, Void, String> {
+public class DownloadJson extends AsyncTask<String, Void, String> {
     private static Context CONTEXT;
     private static String result = "";
+    public static Bitmap iconoImagen;
     public static ArrayList<Modelo> modelos = new ArrayList<>();
 
-    public static void metercosas(Context contexto, View view) {
-
+    public static void metercosas(Context context) {
+        CONTEXT = context;
     }
 
     @Override
@@ -76,10 +89,34 @@ public class DowloadJson extends AsyncTask<String, Void, String> {
                     objeto.get(i).get("icon").toString()
             ));
         }
+        //aqui lo que hacemos es llamar el metodo para meter dentro de iconoImagen el
+        //bitmap para utilizarlo luego en la inserción de datos
+        downloadImage(modelos.get(0).getIcono());
+
 //        ModeloHelper modeloHelper = new ModeloHelper(this);
 //        modeloHelper.getWritableDatabase();
 //        ModeloAdo modeloAdo = new ModeloAdo(this);
 //        modeloAdo.rellenarAlumnos(flkjflkj, modelos);
 
     }
+
+
+    public void downloadImage(String imageUrl) {
+        Bitmap bitmap = null;
+        try {
+            URL url = new URL(imageUrl);
+            bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        iconoImagen = bitmap;
+    }
+
+    @Override
+    protected void onPostExecute(String bitmap) {
+        //en este metodo cargamos el fragment dentro del contenedor con los datos correspondientes
+        ContenidoGeneral contenidoGeneral = new ContenidoGeneral();
+        contenidoGeneral.contenidoRecycler();
+    }
+
 }

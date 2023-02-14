@@ -4,14 +4,15 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 
 import com.example.tg3grupo1.Adapters.SerieAdapter;
-import com.example.tg3grupo1.BBDD.DowloadJson;
+import com.example.tg3grupo1.BBDD.DownloadJson;
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
 
@@ -27,8 +28,9 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static ContenidoGeneral instance;
-    private static View view;
+    public static View view;
     private static Context context;
+    private static RecyclerView recyclerGremio;
     // TODO: Rename and change types of parameters
 
     public ContenidoGeneral() {
@@ -59,7 +61,12 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_contenido_general, container, false);
-        ArrayList<Modelo> f = DowloadJson.modelos;
+
+        recyclerGremio = view.findViewById(R.id.recyclerGeneral);
+        recyclerGremio.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerGremio.setLayoutManager(layoutManager);
         return view;
     }
 
@@ -67,5 +74,8 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
     public void onNoteClic(int posicion){
         getFragmentManager().beginTransaction().replace(R.id.contenedor,
                 Descripcion.newInstance(context)).commit();
+    }
+    public void contenidoRecycler(){
+        recyclerGremio.setAdapter(new SerieAdapter(DownloadJson.modelos, this));
     }
 }
