@@ -7,33 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.Descripcion" >
 
-    <ImageView
-        android:id="@+id/imagen"
-        android:layout_width="171dp"
-        android:layout_height="161dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/cyberpunk"
-        android:text="TextView"
-        android:textColor="#FFEB3B"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.319" />
-
     <TextView
         android:id="@+id/ultimaModificacion"
         android:layout_width="wrap_content"
@@ -47,7 +20,37 @@
         app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.38" />
+
+    <TextView
+        android:id="@+id/coordenadas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cyberpunk"
+        android:text="TextView"
+        android:textColor="#FFEB3B"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.529" />
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="157dp"
+        android:layout_height="34dp"
+        android:fontFamily="@font/cyberpunk"
+        android:text="TextView"
+        android:textColor="#FFEB3B"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.120000005" />
 
     <TextView
         android:id="@+id/titulo"
@@ -62,29 +65,43 @@
         app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <ImageButton
         android:id="@+id/btnIzq"
-        android:layout_width="126dp"
-        android:layout_height="142dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:backgroundTint="#00FFFFFF"
         android:src="@drawable/flechaizq"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.908" />
 
     <ImageButton
         android:id="@+id/btnDer"
-        android:layout_width="126dp"
-        android:layout_height="142dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:backgroundTint="#00FFFFFF"
         android:src="@drawable/flechader"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.908" />
+
+    <ImageView
+        android:id="@+id/taxi"
+        android:layout_width="111dp"
+        android:layout_height="110dp"
+        android:src="@drawable/taxi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012" />
 </androidx.constraintlayout.widget.ConstraintLayout>
