@@ -97,8 +97,8 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
         //aqui lo que hacemos es meter los datos dentro de la base de datos, para luego hacer
         //las consultas correspondiente a esta
 
-        ModeloHelper modeloHelper = new ModeloHelper(CONTEXT);
-        modeloHelper.getWritableDatabase();
+//        ModeloHelper modeloHelper = new ModeloHelper(CONTEXT);
+//        modeloHelper.getWritableDatabase();
 
         ModeloAdo modeloAdo = new ModeloAdo(CONTEXT);
         modeloAdo.insertar(modelos);
