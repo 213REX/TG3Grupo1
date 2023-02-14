@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +17,7 @@ import com.example.tg3grupo1.Adapters.SerieAdapter;
 import com.example.tg3grupo1.BBDD.DownloadJson;
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
+import com.example.tg3grupo1.Vistas.Inicio;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
     public static View view;
     private static Context context;
     private static RecyclerView recyclerGremio;
+    private static ArrayList<Modelo>contenidRecycler;
     // TODO: Rename and change types of parameters
 
     public ContenidoGeneral() {
@@ -72,10 +76,21 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
 
     @Override
     public void onNoteClic(int posicion){
-        getFragmentManager().beginTransaction().replace(R.id.contenedor,
-                Descripcion.newInstance(context)).commit();
+        //no funciona
+        //Inicio inicio = new Inicio();
+        //inicio.showFragment(Descripcion.newInstance(context, contenidRecycler, posicion));
+        Descripcion des = Descripcion.newInstance(context, contenidRecycler, posicion);
+//        getFragmentManager().beginTransaction().replace(R.id.contenedor,
+//                des).commit();
+
+        requireFragmentManager().beginTransaction()
+                .replace(R.id.contenedor, Descripcion.newInstance(context, contenidRecycler, posicion))
+                .commit();
+
     }
+
     public void contenidoRecycler(){
+        contenidRecycler = DownloadJson.modelos;
         recyclerGremio.setAdapter(new SerieAdapter(DownloadJson.modelos, this));
     }
 }

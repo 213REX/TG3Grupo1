@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,9 +22,11 @@ import com.example.tg3grupo1.R;
 public class Descripcion extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
-    private static  Descripcion instance;
+    private static Descripcion instance;
     private static View view;
     private static Context context;
+    private static int pos;
+    private static ArrayList<Modelo> contenido;
     // TODO: Rename and change types of parameters
 
     public Descripcion() {
@@ -35,10 +40,12 @@ public class Descripcion extends Fragment {
      * @return A new instance of fragment Descripcion.
      */
     // TODO: Rename and change types and number of parameters
-    public static Descripcion newInstance(Context cont) {
-        if (instance == null){
+    public static Descripcion newInstance(Context cont, ArrayList<Modelo> model, int posicion) {
+        if (instance == null) {
             instance = new Descripcion();
             context = cont;
+            contenido = model;
+            pos = posicion;
         }
         return instance;
     }
