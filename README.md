@@ -26,9 +26,9 @@
         }
 
         Vista {
-            Inicio: Aqui se encuentran las distintas opciones de Inicio de nueva partida y Ver estadísticas
-            Juego: Desde donde se podrá jugar al juego (en este caso Tres en Raya)
-            MainActivity: Basicamente desde aquí se inicia toda la aplicación y es donde se encuentra el Splash 
+            Inicio: Aqui se muestra el inicio de la aplicacion el cual muestra los datos de la tabla
+            Splash : La presentacion de la aplicacion antes de la inicializacion de esta 
+            
         }
 
         
@@ -37,46 +37,42 @@
         #Actividades
             #(Nicolas Del Amo / Codigo - Jefe de Proyecto)
                 Se encarga principalmente de organizar y tomar las decisiones del equipo
-                    Recursos / Programación
+                    Recursos / Programación / BBDD
 
             #(Daniel Alvaro del Rio / Codigo)
                 Se encargará principalmente de la programacion y estructurar las actividades
-                    Adapters / Programación / Modelos
+                    Fragments / Correccion de errores / JSON
 
             #(Christian Martinez / Interfaz)
                 Se encargará de la interfaz y las decisiones de diseño
-                    Interfaz / Programación
+                    Interfaz / Creacion de Diseño
 
             #(Miguel Lizaranzu / Interfaz)
                 Se encargará de ayudar al deseño de las interfazes
-                    Diseño / Programación
+                    Diseño / Alert dialogs
 
         # Controles:
-            - 9 Botones que actuarán de tal manera que mostrarán las fichas
+            - Tres botones de menu de fragments que despliegan diferentes aletrs dialog
 
         # Lógica de negocio
-            - El jugador jugará contra la máquina y dependiendo de como juegue ganará o perderá
+            - La aplicacion mantendra un registro de toda la base de datos
 
     #Descripción del proyecto
         #Descripción general
-            Nuestra aplicacion consiste en la descarga de datos del ayuntamiento de zaragoza para que recoga 
-            las paradas de Taxi y indique a donde deben ir los taxis, la tematica elegida por el grupo a sido Cyberpunk
-            la aplicacion principalmente tendra estetica del videojuego Cyberpunk y sus colores primarios seran
-            Amarrilo, Azul y Negro
+            Nuestra aplicacion consiste en una base de datos con diseño de Cyberpunk 2077 la cual
+            guarda registros de paradas de taxi para ello guarda una id que identifica el registro,
+            la calle donde se detiene, el dia de la ultima actualizacion, las cordenadas y si se 
+            desea un icono o foto representativo
             
         #Descripción detallada de cada uno
             (Nicolas del amo)
-            [Se ocupó de la pantalla de presentación de la aplicación, la cual se trata de un gif
-             Después de la base principal del tablero del juego en si (Tres en Raya)
-             Y por ultimo la clase adapter con la cual se muestran de forma correcta las estadisticas]
+            [Se ocupó de liderar el grupo, crear el adapter y los modelos de las consultas ]
 
             (Daniel del rio)
-            [Se ocupó de toda la parte de Lógica, el funcionamiento del juego, creación de metodos y funcionamiento
-            óptimo de la aplicación]
+            [Se ocupó completamente de todo el JSON y de arreglar los errores que venina con este]
 
             (Christian martinez)
-            [Se ocupó de la búsqueda de las imagenes de las fichas, el tablero y de la interfaz arcade de la aplicación]
+            [Se ocupó de la interfaz principalemnte de como seria la tematica]
 
             (Miguel Lizaranzu)
-            [Se ocupó de la parte de diseño junto al Jefe de equipo, importando la debida fuente de arcade
-            y el diseño de los campos de texto, así como los botones]
+            [Se ocupó de Asistir en el diseño y los alert dialog]
