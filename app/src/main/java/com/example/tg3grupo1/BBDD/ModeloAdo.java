@@ -21,31 +21,33 @@ public class ModeloAdo implements AutoCloseable {
         db = helper.getReadableDatabase();
     }
 
+
+
     public void insertar(ArrayList<Modelo> parada) {
         for (int i = 0 ; i< parada.size(); i++) {
             ContentValues valores = new ContentValues();
-            valores.put("id", parada.get(i).getId());
-            valores.put("titulo", parada.get(i).getTitulo());
-            valores.put("ultimaactualizacion", parada.get(i).getUltimaactualizacion());
-            valores.put("coordenadas", parada.get(i).getCoordenadas());
-            valores.put("icono", parada.get(i).getIcono());
+            valores.put("id", parada.get(i).getId().replace("\"","" ));
+            valores.put("titulo", parada.get(i).getTitulo().replace("\"","" ));
+            valores.put("ultimaactualizacion", parada.get(i).getUltimaactualizacion().replace("\"","" ));
+            valores.put("coordenadas", parada.get(i).getCoordenadas().replace("\"","" ));
+            valores.put("icono", parada.get(i).getIcono().replace("\"","" ));
             helper.getWritableDatabase().insert("registros", null, valores);
 
-            String sql = "INSERT INTO registros (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
+            /*String sql = "INSERT INTO registros (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
             helper.getWritableDatabase().execSQL(sql, new Object[]{parada.get(i).getId(), parada.get(i).getTitulo(),
-                    parada.get(i).getUltimaactualizacion(), parada.get(i).getCoordenadas(), parada.get(i).getIcono()});
+                    parada.get(i).getUltimaactualizacion(), parada.get(i).getCoordenadas(), parada.get(i).getIcono()});*/
         }
     }
 
     public void buscar(String dato){
         Modelo parada = new Modelo();
-        ContentValues valores = new ContentValues();
+        /*ContentValues valores = new ContentValues();
         valores.put("id", parada.getId());
         valores.put("titulo", parada.getTitulo());
         valores.put("ultimaactualizacion", parada.getUltimaactualizacion());
         valores.put("coordenadas", parada.getCoordenadas());
         valores.put("icono", parada.getIcono());
-        helper.getWritableDatabase().insert("Taxis", null, valores);
+        helper.getWritableDatabase().insert("Taxis", null, valores);*/
 
         String sql = "SELECT * FROM registros WHERE id LIKE '%"+dato+"%' OR titulo LIKE '%"+dato+"%' " +
                 "OR ultimaactualizacion LIKE '%"+dato+"%' OR coordenadas LIKE '%"+dato+"%' " +

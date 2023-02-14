@@ -14,7 +14,8 @@ public class ModeloHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "CREATE TABLE registros (id INTEGER PRIMARY KEY, titulo TEXT, " +
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS registros");
+        String sql = "CREATE TABLE registros (id TEXT PRIMARY KEY, titulo TEXT, " +
                 "ultimaactualizacion TEXT, coordenadas TEXT, icono TEXT);";
         sqLiteDatabase.execSQL(sql);
     }
