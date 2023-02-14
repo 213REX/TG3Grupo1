@@ -19,11 +19,10 @@ public class Splash extends AppCompatActivity {
         setTheme(R.style.fondoInicio);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //pasamos el contexto y despues creamos un objeto de la clase downloadJson
-        //para asi ejecutarlo pasandole la url y que descargue todos los datos y que los
-        //visualice
+
         DownloadJson.metercosas(this);
         DownloadJson json = new DownloadJson();
+
         try {
             json.execute("https://www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/equipamiento/parada-taxi.json?rf=html&srsname=wgs84&start=0&rows=1000&distance=500%22").get();
         } catch (ExecutionException | InterruptedException e) {
@@ -32,11 +31,11 @@ public class Splash extends AppCompatActivity {
         //el siguiente codigo permite que el splash cambie directamente
         //a la main activity tras 5 segundos
         Handler handler = new Handler(Looper.myLooper());
-        handler.postDelayed(() -> {
+        handler.postDelayed(()->{
 
             Intent intent = new Intent(getApplicationContext(), Inicio.class);
             startActivity(intent);
             finish();
-        }, 5000);
+        },5000);
     }
 }
