@@ -10,7 +10,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.tg3grupo1.BBDD.ModeloAdo;
+import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
+
+import java.util.ArrayList;
 
 public class AlertDialogs {
     private static AlertDialog dialogProgress;
@@ -41,7 +45,10 @@ public class AlertDialogs {
         dialogProgress.dismiss();
     }
 
-    public static void AlertBusquedas(Context context) {
+    public static ArrayList<Modelo> AlertBusquedas(Context context) {
+        ModeloAdo modeloAdo = new ModeloAdo(context);
+        ArrayList<Modelo> contenido = new ArrayList<>();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.alert_dialog_busquedas, null);
@@ -51,9 +58,14 @@ public class AlertDialogs {
         AlertDialog dialog = builder.create();
         imageButton.setOnClickListener(v -> {
             Inicio inicio = new Inicio();
-            inicio.busquedas(campobuscar.getText().toString());
-            dialog.dismiss();
+            if (campobuscar.getText().toString().isEmpty()) {
+                campobuscar.setError("No puede quedar vacio");
+            } else {
+                modeloAdo.buscar(campobuscar.getText().toString());
+                dialog.dismiss();
+            }
         });
         dialog.show();
+        return contenido;
     }
 }

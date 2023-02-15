@@ -60,12 +60,7 @@ public class Inicio extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void busquedas(String contenido){
-        ModeloAdo modeloAdo = new ModeloAdo(this);
 
-        ArrayList<Modelo> fff = new ArrayList<>(modeloAdo.buscar(contenido));
-        System.out.println(fff.size());
-    }
     public void showFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
