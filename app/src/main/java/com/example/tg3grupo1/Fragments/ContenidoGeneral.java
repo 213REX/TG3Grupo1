@@ -50,9 +50,9 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
     // TODO: Rename and change types and number of parameters
     public static ContenidoGeneral newInstance(Context cont, ArrayList<Modelo> modelos) {
 //        if (instance == null) {
-            instance = new ContenidoGeneral();
-            context = cont;
-            contenidRecycler = modelos;
+        instance = new ContenidoGeneral();
+        context = cont;
+        contenidRecycler = modelos;
 //        }
         return instance;
     }
@@ -73,7 +73,7 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerGremio.setLayoutManager(layoutManager);
 
-        if (contenidRecycler == null) {
+        if (contenidRecycler.size() == 0) {
             contenidRecycler = DownloadJson.modelos;
         }
 
@@ -86,7 +86,6 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
         //no funciona
         //Inicio inicio = new Inicio();
         //inicio.showFragment(Descripcion.newInstance(context, contenidRecycler, posicion));
-        Descripcion des = Descripcion.newInstance(context, contenidRecycler, posicion);
 //        getFragmentManager().beginTransaction().replace(R.id.contenedor,
 //                des).commit();
 

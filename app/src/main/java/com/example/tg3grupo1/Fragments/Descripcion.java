@@ -8,9 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
+import com.example.tg3grupo1.Vistas.AlertDialogs;
 
 import java.util.ArrayList;
 
@@ -27,6 +32,13 @@ public class Descripcion extends Fragment {
     private static Context context;
     private static int pos;
     private static ArrayList<Modelo> contenido;
+
+    private TextView id;
+    private TextView ultimaModificacion;
+    private TextView coordenadas;
+    private TextView titulo;
+    private ImageButton btnIzq;
+    private ImageButton btnDer;
     // TODO: Rename and change types of parameters
 
     public Descripcion() {
@@ -60,7 +72,37 @@ public class Descripcion extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_descripcion, container, false);
+        id = view.findViewById(R.id.id);
+        ultimaModificacion = view.findViewById(R.id.ultimaModificacion);
+        coordenadas = view.findViewById(R.id.coordenadas);
+        titulo = view.findViewById(R.id.titulo);
+        btnIzq = view.findViewById(R.id.btnIzq);
+        btnDer = view.findViewById(R.id.btnDer);
+        cargarContenido();
+        btnDer.setOnClickListener(v -> {
+            if (pos == contenido.size()-1) {
+                AlertDialogs.AlertError(context, "No quedan registros");
+            } else {
+                pos++;
+                cargarContenido();
+            }
+        });
+        btnIzq.setOnClickListener(v->{
+            if (pos == 0) {
+                AlertDialogs.AlertError(context, "No quedan registros");
+            } else {
+                pos--;
+                cargarContenido();
+            }
+        });
         return view;
+    }
+
+    private void cargarContenido() {
+        id.setText(contenido.get(pos).getId().replace("\"","" ));
+        coordenadas.setText(contenido.get(pos).getCoordenadas().replace("\"","" ));
+        titulo.setText(contenido.get(pos).getTitulo().replace("\"","" ));
+        ultimaModificacion.setText(contenido.get(pos).getUltimaactualizacion().replace("\"","" ));
     }
 
     @Override
