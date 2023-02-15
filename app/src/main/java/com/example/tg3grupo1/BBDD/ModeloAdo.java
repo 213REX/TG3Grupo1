@@ -33,28 +33,26 @@ public class ModeloAdo implements AutoCloseable {
             valores.put("coordenadas", parada.get(i).getCoordenadas().replace("\"","" ));
             valores.put("icono", parada.get(i).getIcono().replace("\"","" ));
             helper.getWritableDatabase().insert("registros", null, valores);
-
-            /*String sql = "INSERT INTO registros (id, titulo, Ultimaactuaalizacion, coordenadas, icono) VALUES (?, ?, ?, ?, ?);";
-            helper.getWritableDatabase().execSQL(sql, new Object[]{parada.get(i).getId(), parada.get(i).getTitulo(),
-                    parada.get(i).getUltimaactualizacion(), parada.get(i).getCoordenadas(), parada.get(i).getIcono()});*/
         }
     }
 
-    public void buscar(String dato){
-        Modelo parada = new Modelo();
-        /*ContentValues valores = new ContentValues();
-        valores.put("id", parada.getId());
-        valores.put("titulo", parada.getTitulo());
-        valores.put("ultimaactualizacion", parada.getUltimaactualizacion());
-        valores.put("coordenadas", parada.getCoordenadas());
-        valores.put("icono", parada.getIcono());
-        helper.getWritableDatabase().insert("Taxis", null, valores);*/
-
+    public List<Modelo> buscar(String dato){
+        List<Modelo> parada = new ArrayList<>();
         String sql = "SELECT * FROM registros WHERE id LIKE '%"+dato+"%' OR titulo LIKE '%"+dato+"%' " +
-                "OR ultimaactualizacion LIKE '%"+dato+"%' OR coordenadas LIKE '%"+dato+"%' " +
-                "OR icono LIKE '%"+dato+"%';";
-        helper.getWritableDatabase().execSQL(sql, new Object[]{parada.getId(), parada.getTitulo(),
-                parada.getUltimaactualizacion(), parada.getCoordenadas(), parada.getIcono()});
+                "OR ultimaactualizacion LIKE '%"+dato+"%' OR coordenadas LIKE '%"+dato+"%';";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        while (cursor.moveToNext()){
+            Modelo para = new Modelo();
+            para.setId(cursor.getString(0));
+            para.setTitulo(cursor.getString(1));
+            para.setUltimaactualizacion(cursor.getString(2));
+            para.setCoordenadas(cursor.getString(3));
+            para.setIcono(cursor.getString(4));
+            parada.add(para);
+        }
+
+        return parada;
     }
 
 
