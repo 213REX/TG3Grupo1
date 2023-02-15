@@ -43,6 +43,7 @@ public class Inicio extends AppCompatActivity {
             showFragment(ContenidoGeneral.newInstance(this, new ArrayList<Modelo>()));
 
         } else if (item.getItemId() == R.id.item_buscar) {
+        } else if (item.getItemId() == R.id.item_actualizar) {
 
             DownloadJson.metercosas(this);
             DownloadJson json = new DownloadJson();
@@ -52,8 +53,7 @@ public class Inicio extends AppCompatActivity {
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
-        } else if (item.getItemId() == R.id.item_actualizar) {
-            System.out.println("sexoanaaaaaaal");
+            showFragment(ContenidoGeneral.newInstance(this, new ArrayList<Modelo>()));
         }
         return super.onOptionsItemSelected(item);
     }

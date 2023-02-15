@@ -2,9 +2,12 @@ package com.example.tg3grupo1.BBDD;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tg3grupo1.Fragments.ContenidoGeneral;
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
+import com.example.tg3grupo1.Vistas.AlertDialogs;
 import com.example.tg3grupo1.Vistas.Inicio;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -38,6 +42,13 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
 
     public static void metercosas(Context context) {
         CONTEXT = context;
+    }
+
+    @Override
+    protected void onPreExecute(){
+        if (modelos.size() != 0){
+            AlertDialogs.AlertProgres(CONTEXT);
+        }
     }
 
     @Override
@@ -107,9 +118,16 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
 
     public void downloadImage(String imageUrl) {
     }
-
+private static Boolean bb = false;
     @Override
     protected void onPostExecute(String bitmap) {
+        if (bb){
+            Handler handler = new Handler(Looper.myLooper());
+            handler.postDelayed(()->{
+                AlertDialogs.AlertProgressCerrar();
+            },2000);
+        }
+        bb = true;
     }
-
 }
+

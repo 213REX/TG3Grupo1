@@ -49,11 +49,11 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
      */
     // TODO: Rename and change types and number of parameters
     public static ContenidoGeneral newInstance(Context cont, ArrayList<Modelo> modelos) {
-        if (instance == null) {
+//        if (instance == null) {
             instance = new ContenidoGeneral();
             context = cont;
             contenidRecycler = modelos;
-        }
+//        }
         return instance;
     }
 
