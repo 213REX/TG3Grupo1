@@ -62,4 +62,10 @@ public class Descripcion extends Fragment {
         view = inflater.inflate(R.layout.fragment_descripcion, container, false);
         return view;
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        instance = null;
+    }
 }

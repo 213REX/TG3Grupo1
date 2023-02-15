@@ -34,7 +34,7 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
     public static View view;
     private static Context context;
     private static RecyclerView recyclerGremio;
-    private static ArrayList<Modelo>contenidRecycler;
+    private static ArrayList<Modelo> contenidRecycler;
     // TODO: Rename and change types of parameters
 
     public ContenidoGeneral() {
@@ -48,10 +48,11 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
      * @return A new instance of fragment ContenidoGeneral.
      */
     // TODO: Rename and change types and number of parameters
-    public static ContenidoGeneral newInstance(Context cont) {
-        if (instance == null){
+    public static ContenidoGeneral newInstance(Context cont, ArrayList<Modelo> modelos) {
+        if (instance == null) {
             instance = new ContenidoGeneral();
             context = cont;
+            contenidRecycler = modelos;
         }
         return instance;
     }
@@ -71,13 +72,17 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerGremio.setLayoutManager(layoutManager);
-        contenidRecycler = DownloadJson.modelos;
+
+        if (contenidRecycler == null) {
+            contenidRecycler = DownloadJson.modelos;
+        }
+
         recyclerGremio.setAdapter(new SerieAdapter(DownloadJson.modelos, this));
         return view;
     }
 
     @Override
-    public void onNoteClic(int posicion){
+    public void onNoteClic(int posicion) {
         //no funciona
         //Inicio inicio = new Inicio();
         //inicio.showFragment(Descripcion.newInstance(context, contenidRecycler, posicion));
@@ -89,5 +94,11 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
                 .replace(R.id.contenedor, Descripcion.newInstance(context, contenidRecycler, posicion))
                 .commit();
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        instance = null;
     }
 }
