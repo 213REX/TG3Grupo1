@@ -100,4 +100,11 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
         super.onStop();
         instance = null;
     }
+
+    @Override
+
+    public void onPause() {
+        super.onPause();
+        super.onStop();
+    }
 }
