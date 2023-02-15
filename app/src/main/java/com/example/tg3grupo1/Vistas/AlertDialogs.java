@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -44,9 +45,15 @@ public class AlertDialogs {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.alert_dialog_busquedas, null);
-//        ImageButton imageButton = view.findViewById(R.id.imageView6);
+        ImageButton imageButton = view.findViewById(R.id.btnBuscar);
+        EditText campobuscar = view.findViewById(R.id.campoBuscar);
         builder.setView(view);
         AlertDialog dialog = builder.create();
+        imageButton.setOnClickListener(v -> {
+            Inicio inicio = new Inicio();
+            inicio.busquedas(campobuscar.getText().toString());
+            dialog.dismiss();
+        });
         dialog.show();
     }
 }

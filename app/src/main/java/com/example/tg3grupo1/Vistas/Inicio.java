@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.tg3grupo1.BBDD.DownloadJson;
+import com.example.tg3grupo1.BBDD.ModeloAdo;
 import com.example.tg3grupo1.Fragments.ContenidoGeneral;
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
@@ -16,6 +17,7 @@ import com.example.tg3grupo1.R;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Inicio extends AppCompatActivity {
@@ -43,6 +45,7 @@ public class Inicio extends AppCompatActivity {
             showFragment(ContenidoGeneral.newInstance(this, new ArrayList<Modelo>()));
 
         } else if (item.getItemId() == R.id.item_buscar) {
+            AlertDialogs.AlertBusquedas(this);
         } else if (item.getItemId() == R.id.item_actualizar) {
 
             DownloadJson.metercosas(this);
@@ -57,7 +60,12 @@ public class Inicio extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    public void busquedas(String contenido){
+        ModeloAdo modeloAdo = new ModeloAdo(this);
 
+        ArrayList<Modelo> fff = new ArrayList<>(modeloAdo.buscar(contenido));
+        System.out.println(fff.size());
+    }
     public void showFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
