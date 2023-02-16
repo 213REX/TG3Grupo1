@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -73,6 +74,18 @@ public class Inicio extends AppCompatActivity {
                     contenidoBusqueda[0] = (ArrayList<Modelo>) contenido[0];
                     if (contenidoBusqueda[0].size() != 0) {
                         showFragment(ContenidoGeneral.newInstance(this, contenidoBusqueda[0]));
+                        dialogBusquedas.dismiss();
+                    }else{
+                        ArrayList<Modelo> pitocua = new ArrayList<>();
+                        pitocua.add(new Modelo());
+                        pitocua.get(0).setTitulo("1");
+                        showFragment(ContenidoGeneral.newInstance(this, pitocua));
+                        //esto es para cerrar el teclado
+                        //InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        //imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+                        AlertDialogs.AlertError(this, "No se han encontrado registros");
+                        dialogBusquedas.dismiss();
                     }
                 }
             });

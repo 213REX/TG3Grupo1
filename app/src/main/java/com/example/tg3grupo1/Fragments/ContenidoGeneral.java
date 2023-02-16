@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +15,6 @@ import com.example.tg3grupo1.Adapters.SerieAdapter;
 import com.example.tg3grupo1.BBDD.DownloadJson;
 import com.example.tg3grupo1.Modelo.Modelo;
 import com.example.tg3grupo1.R;
-import com.example.tg3grupo1.Vistas.Inicio;
 
 import java.util.ArrayList;
 
@@ -33,7 +30,7 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
     private static ContenidoGeneral instance;
     public static View view;
     private static Context context;
-    private static RecyclerView recyclerGremio;
+    private static RecyclerView recyclerGeneral;
     private static ArrayList<Modelo> contenidRecycler;
     // TODO: Rename and change types of parameters
 
@@ -67,17 +64,23 @@ public class ContenidoGeneral extends Fragment implements SerieAdapter.OnNoteLis
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_contenido_general, container, false);
 
-        recyclerGremio = view.findViewById(R.id.recyclerGeneral);
-        recyclerGremio.setHasFixedSize(true);
+        recyclerGeneral = view.findViewById(R.id.recyclerGeneral);
+        recyclerGeneral.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerGremio.setLayoutManager(layoutManager);
+        recyclerGeneral.setLayoutManager(layoutManager);
 
         if (contenidRecycler.size() == 0) {
             contenidRecycler = DownloadJson.modelos;
+            recyclerGeneral.setAdapter(new SerieAdapter(new ArrayList<Modelo>(), this));
+            recyclerGeneral.setAdapter(new SerieAdapter(contenidRecycler, this));
+        }else if (contenidRecycler.size() ==1 && contenidRecycler.get(0).getTitulo().equals("1")){
+            recyclerGeneral.setAdapter(new SerieAdapter(new ArrayList<Modelo>(), this));
+        }else{
+            recyclerGeneral.setAdapter(new SerieAdapter(new ArrayList<Modelo>(), this));
+            recyclerGeneral.setAdapter(new SerieAdapter(contenidRecycler, this));
         }
 
-        recyclerGremio.setAdapter(new SerieAdapter(DownloadJson.modelos, this));
         return view;
     }
 
